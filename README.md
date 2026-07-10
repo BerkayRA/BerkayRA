@@ -46,6 +46,7 @@ I built the BerkayMakes Forge to track commissions, chat with customers on speci
 ## 🛠️ Other things I'm building
 
 - **[curated-ai-digest](https://github.com/BerkayRA/curated-ai-digest)** — a self-hosted, Claude-powered system that curates, writes, brands, and sends a weekly Turkish AI-news digest, with curation agents and an approval dashboard.
+- **[etch-a-chat](https://github.com/BerkayRA/curated-ai-digest)** — a text-free, privacy-focused instant messenger where all messages are in the form of doodles (hence the name evoking Etch A Sketch) with a WIP live, collaborative whiteboard room option (think old Google Jamboard).
 
 ## 🧠 Background
 
