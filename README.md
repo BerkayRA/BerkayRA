@@ -18,6 +18,23 @@ My main interest is **language**: how it's used, how it's structured, how it's m
 
 ---
 
+## Currently building — **Egemen** 🦅 (a sovereign Turkish LLM, in iterations)
+
+*Egemen* means "sovereign" in Turkish, and that's the whole brief: a Turkish language model whose tokenizer, corpus, weights, and serving all stay on-premise, built one iteration at a time. Each generation is meant to be small enough to train on hardware we actually have and honest enough to show its working.
+
+**Egemen-124M — done, and [live in your browser](https://huggingface.co/spaces/BerkayRA/egemen-turkish-124m-demo).** A ~110M-parameter decoder trained from scratch for 300k steps on a single 8 GB GPU, with a 32k SentencePiece tokenizer. The demo runs entirely client-side (transformers.js + Pyodide, zero server compute) and has three tabs:
+- **Model:** free-form Turkish generation.
+- **Zaman Makinesi (Time Machine):** the same prompts sampled across training, so you can watch the model go from noise to fluent-but-wrong ("the capital of Türkiye is İstanbul…") to, eventually, Ankara.
+- **Dilbilimsel Tokenizer:** the morphological analyzer from [turkish-tokenizer](https://github.com/BerkayRA/turkish-tokenizer), running the exact Python code in the browser.
+
+Weights: [`BerkayRA/egemen-turkish-124m`](https://huggingface.co/BerkayRA/egemen-turkish-124m).
+
+**Egemen-1.2B — training now.** A 10× scale-up, trained from scratch in FP8 on a single DGX Spark (Grace Blackwell) toward a ~30B-token budget, with a new 48k morphology-aware tokenizer. It's roughly a third of the way through. The Time Machine came along: 31 fixed prompts are sampled every 250 steps, so this run's growing-up is on the record too.
+
+**Behind both: the corpus.** A curation pipeline with an HPLT v3 backbone across fifteen Turkish sources. It uses an LLM-as-teacher quality classifier, so we keep encyclopedic and long-form text and cut forum chatter. KVKK-compliant: the training data never leaves the building.
+
+**Next:** continued pretraining of a strong open-weight base model on the same curated Turkish corpus (the fastest path to a genuinely useful assistant), followed by instruction and tool-use tuning. A larger from-scratch generation will follow as compute allows.
+
 ## Currently building — Turkish LLM suite
 
 An exploratory project that spans multiple repos to build a Turkish NLP tool and eventually the **whole stack** for a Turkish LLM. I started with the tokenizer (first as a linguistic tool, then a tokenizer in the LLM sense) with the initial thesis that Turkish, as an agglutinative language, could be fragmented better with a bespoke tokenizer instead of generic English-tuned tokenizers. By building the tokenizer and corpus *first*, and I sought not to waste compute (which has been rather challenging to access in my current work premises) training on inflated per-token costs.
