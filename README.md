@@ -54,11 +54,13 @@ turkish-tokenizer  →  turkish-llm  →  turkish-corpus  →  turkish-llm-demo
 
 <sub>You can find them together under the <a href="https://github.com/search?q=topic%3Aturkish-llm-suite+user%3ABerkayRA&type=repositories"><code>turkish-llm-suite</code></a> topic.</sub>
 
-## Currently building — **[BerkayMakes Forge](https://berkaymakes.vercel.app)** (NestJS · Next.js · Prisma)
+## Currently building — **[BerkayMakes Forge](https://berkaymakes.vercel.app)** & **Guild Hall** (NestJS · Next.js · Prisma · three.js · Socket.IO)
 
 [BerkayMakes](https://instagram.com/berkaymakes) (est. 2023) is my solo tabletop gaming workshop where I design, build, and customize 3D-printed tabletop miniatures, props, dice, dice towers, decorative figurines, cosplay equipment, and various fantasy-inspired trinkets. I accept commissions via Instagram DMs and at events/conventions where I set up booths. However, as a passion project, I felt like the online presence of BerkayMakes demanded something with more character and flair than just an Instagram profile (which *does* have a lot of character — go check it out & reach out for some great minis!). 
 
-I built the Forge to track commissions, chat with customers on specifics on our own chat platform, archive and display previous builds, and provide regular customers and the wider tabletop community with a livestream of my workspace and several digital tabletop gaming tools. Check out the Tavern for a dice roller, initiative tracker, and name generator. 🎲
+I built the Forge to track commissions, chat with customers on specifics on our own chat platform, archive and display previous builds, and provide regular customers and the wider tabletop community with a livestream of my workspace.
+
+What started as a few tabletop tools (a dice roller, an initiative tracker) has grown into **Guild Hall**, a proper multiplayer 3D tabletop simulator for D&D 5e. The GM opens a table and players join by invite link. Combat is rules-aware: initiative, conditions, concentration, reach, opportunity attacks, and saving throws, plus spellcasting with area effects and summons, an SRD monster bestiary, and animated 3D dice. The table has its own chat with roll commands, secret GM rolls, whispers, and GM moderation. 🎲
 
 ## Currently building — **Quotient** (NestJS · React · PostgreSQL + pgvector)
 
@@ -66,9 +68,17 @@ Quotient is a quote-to-cash platform that handles quotes, approvals, documents, 
 
 ## Currently building — **Ketum** 🤐 (Python · private for now)
 
-*Ketum* is Turkish for "tight-lipped": someone you can trust with a secret. It's an anonymization and pseudonymization engine for Turkish-first enterprise text, and it has two jobs. It cleans LLM training corpora before they go anywhere near a model. And it sits between an on-prem assistant and a frontier model with web search, stripping the sensitive parts out of a prompt on the way out and putting them back into the answer on the way in.
+*Ketum* is Turkish for "tight-lipped": someone you can trust with a secret. It's an anonymization and pseudonymization engine for Turkish-first enterprise text, designed from the ground up to support **KVKK** (Türkiye's data-protection law) and **GDPR** compliance, and it has two jobs. It cleans LLM training corpora before they go anywhere near a model. And it sits between an on-prem assistant and a frontier model with web search, stripping the sensitive parts out of a prompt on the way out and putting them back into the answer on the way in.
 
-The hard part is *consistency*, and Turkish makes it harder. The same person has to get the same alias across a whole document (or a whole corpus), or the text stops making sense. And because Turkish stacks suffixes onto names, swapping *Ayşe'ye* for an alias means re-harmonizing the suffix too, so the sentence stays grammatical. Underneath: format-preserving encryption (FF1) for IDs and numbers that still have to look valid, prefix-preserving IP anonymization (Crypto-PAn), defenses against Unicode look-alike tricks, and an NER layer (GLiNER + BERTurk). When a mention is ambiguous, it stays unlinked rather than guessed, and if sanitizing fails, nothing goes out: egress fails closed. It's built in small work packages, each of which has to survive an adversarial red-team review before it merges. Same KVKK instinct as the corpus work: real data never leaves the building, so development runs on synthetic data only.
+The hard part is *consistency*, and Turkish makes it harder. The same person has to get the same alias across a whole document (or a whole corpus), or the text stops making sense. And because Turkish stacks suffixes onto names, swapping *Ayşe'ye* for an alias means re-harmonizing the suffix too, so the sentence stays grammatical. Underneath: format-preserving encryption (FF1) for IDs and numbers that still have to look valid, prefix-preserving IP anonymization (Crypto-PAn), defenses against Unicode look-alike tricks, and an NER layer (GLiNER + BERTurk). When a mention is ambiguous, it stays unlinked rather than guessed, and if sanitizing fails, nothing goes out: egress fails closed. It's built in small work packages, each of which has to survive an adversarial red-team review before it merges.
+
+**Built around the law, not bolted on.** Every design decision maps back to KVKK and GDPR:
+- **Data minimization (KVKK art. 4).** Only what a task needs leaves the system; everything else is aliased, tagged, or redacted.
+- **Special-category data (KVKK art. 6).** Health, religion, union membership, biometrics, and criminal records are blocked or redacted by default.
+- **Cross-border transfers (KVKK art. 9, as amended in 2024).** Sending a prompt to a foreign-hosted model is a transfer abroad, so every request leaves an audit trail that serves as the evidence for it.
+- **Pseudonymization vs. anonymization.** Ketum is honest about the difference. As long as a re-identification key exists, aliased data is *still personal data* under both KVKK and GDPR; a corpus only moves toward anonymized once its keys are destroyed, and Ketum records that destruction as evidence.
+
+It supports compliance rather than replacing a DPO or legal counsel, who still sign off on each deployment. And it follows its own rules: real data never leaves the building, so development runs on synthetic data only.
 
 ## Currently building — **Muallim** 🧑‍🏫 (Python · Manim · early research stage)
 
@@ -81,7 +91,7 @@ The render engine and narration work end to end; the verbalizer is in progress, 
 ## 🛠️ Other things I'm building
 
 - **[curated-ai-digest](https://github.com/BerkayRA/curated-ai-digest)** — a self-hosted, Claude-powered system that curates, writes, brands, and sends a weekly Turkish AI-news digest, with curation agents and an approval dashboard.
-- **[etch-a-chat](https://github.com/BerkayRA/curated-ai-digest)** — a text-free, privacy-focused instant messenger where all messages are in the form of doodles (hence the name evoking Etch A Sketch) with a WIP live, collaborative whiteboard room option (think old Google Jamboard).
+- **etch-a-chat** *(private, co-built with a collaborator)* — a text-free, privacy-focused instant messenger where all messages are in the form of doodles (hence the name evoking Etch A Sketch) with a WIP live, collaborative whiteboard room option (think old Google Jamboard).
 
 ## 🧠 Background
 
