@@ -1,11 +1,11 @@
 <h1 align="center">Berkay Adanalı</h1>
 
 <p align="center">
-  <b>AI Engineer</b> &nbsp;·&nbsp; backend developer & linguist by training &nbsp;·&nbsp; building Turkish-first LLM tools, pipelines, and projects
+  <b>AI Engineer</b> &nbsp;·&nbsp; backend developer & linguist by training &nbsp;·&nbsp; building sovereign AI: Turkish-first LLM tools, pipelines, and projects
 </p>
 
 <p align="center">
-  <a href="https://github.com/BerkayRA"><img src="https://img.shields.io/badge/focus-Turkish%20LLMs-c0392b" alt="focus" /></a>
+  <a href="https://github.com/BerkayRA"><img src="https://img.shields.io/badge/focus-Sovereign%20AI%20%C2%B7%20Turkish%20LLMs-c0392b" alt="focus" /></a>
   <img src="https://img.shields.io/badge/CS-%C3%97%20Linguistics-1f6feb" alt="cs x linguistics" />
   <img src="https://img.shields.io/badge/based%20in-Ankara%2C%20T%C3%BCrkiye-2da44e" alt="ankara" />
 </p>
@@ -14,13 +14,13 @@
 
 My main interest is **language**: how it's used, how it's structured, how it's modeled, how we (and our machines) play with it, and how we (and our machines) can do more of it ourselves, for our collective good.
 
-🔭 **Currently:** **AI Engineer @ Mega Bilgisayar** *(April 2026 – present)* — Most of my work involves a sovereign, on-premise **Turkish LLM** I built end to end: tokenizer → corpus → from-scratch model → demo. My private projects include building internal business intelligence and management tools, integrating and customizing open-source technologies into coherent, interoperable frameworks to replace external and proprietary product suites for our corporate clients, and research on building & using better LLM infrastructure. 
+🔭 **Currently:** **AI Engineer @ Mega Bilgisayar** *(April 2026 – present)* — Most of my work is **sovereign AI**: an on-premise **Turkish LLM** I built end to end: tokenizer → corpus → from-scratch model → demo. My private projects include building internal business intelligence and management tools, integrating and customizing open-source technologies into coherent, interoperable frameworks to replace external and proprietary product suites for our corporate clients, and research on building & using better LLM infrastructure. 
 
 ---
 
-## Currently building — **Egemen** 🦅 (a sovereign Turkish LLM, in iterations)
+## Currently building — **Egemen** 🦅 (sovereign AI for Turkish, in iterations)
 
-*Egemen* means "sovereign" in Turkish, and that's the whole brief: a Turkish language model whose tokenizer, corpus, weights, and serving all stay on-premise, built one iteration at a time. Each generation is meant to be small enough to train on hardware we actually have and honest enough to show its working.
+*Egemen* means "sovereign" in Turkish, and that's the whole brief: sovereign AI, meaning a Turkish language model whose tokenizer, corpus, weights, and serving all stay on-premise, built one iteration at a time. Each generation is meant to be small enough to train on hardware we actually have and honest enough to show its working.
 
 **Egemen-124M — done, and [live in your browser](https://huggingface.co/spaces/BerkayRA/egemen-turkish-124m-demo).** A ~110M-parameter decoder trained from scratch for 300k steps on a single 8 GB GPU, with a 32k SentencePiece tokenizer. The demo runs entirely client-side (transformers.js + Pyodide, zero server compute) and has three tabs:
 - **Model:** free-form Turkish generation.
@@ -68,7 +68,7 @@ Quotient is a quote-to-cash platform that handles quotes, approvals, documents, 
 
 ## Currently building — **Ketum** 🤐 (Python · private for now)
 
-*Ketum* is Turkish for "tight-lipped": someone you can trust with a secret. It's an anonymization and pseudonymization engine for Turkish-first enterprise text, designed from the ground up to support **KVKK** (Türkiye's data-protection law) and **GDPR** compliance, and it has two jobs. It cleans LLM training corpora before they go anywhere near a model. And it sits between an on-prem assistant and a frontier model with web search, stripping the sensitive parts out of a prompt on the way out and putting them back into the answer on the way in.
+*Ketum* is Turkish for "tight-lipped": someone you can trust with a secret. It's an anonymization and pseudonymization engine for Turkish-first enterprise text and the privacy layer of the sovereign AI stack, designed from the ground up to support **KVKK** (Türkiye's data-protection law) and **GDPR** compliance, and it has two jobs. It cleans LLM training corpora before they go anywhere near a model. And it sits between an on-prem assistant and a frontier model with web search, stripping the sensitive parts out of a prompt on the way out and putting them back into the answer on the way in.
 
 The hard part is *consistency*, and Turkish makes it harder. The same person has to get the same alias across a whole document (or a whole corpus), or the text stops making sense. And because Turkish stacks suffixes onto names, swapping *Ayşe'ye* for an alias means re-harmonizing the suffix too, so the sentence stays grammatical. Underneath: format-preserving encryption (FF1) for IDs and numbers that still have to look valid, prefix-preserving IP anonymization (Crypto-PAn), defenses against Unicode look-alike tricks, and an NER layer (GLiNER + BERTurk). When a mention is ambiguous, it stays unlinked rather than guessed, and if sanitizing fails, nothing goes out: egress fails closed. It's built in small work packages, each of which has to survive an adversarial red-team review before it merges.
 
